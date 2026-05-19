@@ -1,0 +1,24 @@
+# Keil MDK build outputs
+MDK-ARM/fire_car/
+MDK-ARM/*.log
+MDK-ARM/*.lst
+MDK-ARM/*.uvguix.*
+MDK-ARM/.vscode/*.log
+MDK-ARM/.vscode/*.lock
+
+# graphify generated outputs and temporary files
+graphify-out/
+.graphify_*
+
+# Editor and OS noise
+.vscode/
+.idea/
+*.swp
+*.tmp
+Thumbs.db
+Desktop.ini
+
+# Python/cache noise from local tooling
+__pycache__/
+*.pyc
+.pytest_cache/
