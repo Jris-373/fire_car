@@ -31,7 +31,9 @@ Prefer editing `hardware/` and `Core/*` user sections. Do not reformat `Drivers/
 ## Project Memory
 
 - Before broad codebase analysis, read `graphify-out/GRAPH_REPORT.md`.
+- For the latest manual review of Graphify suggested questions, read `docs/graphify_questions_review.md`.
 - When locating cross-module relationships, query Graphify before doing broad text search.
 - Use `rg` to verify exact file paths and implementation details after Graphify suggests likely modules.
-- If code structure changes substantially, run `graphify . --update`.
-
+- If code structure changes substantially, update Graphify through the local graphify skill/pipeline. The installed `graphify.exe` may not accept `graphify . --update` directly in PowerShell.
+- Treat Graphify call edges as leads, not proof: the current AST extraction can reverse some `calls` edges and mark direct source calls as `INFERRED`.
+- Disambiguate same-label nodes by source file. In this project, `main()` can mean STM32 `Core/Src/main.c` or the K230 script `tools/vision/ball_center_calibration_k230_mqtt.py`.

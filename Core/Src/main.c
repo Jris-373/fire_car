@@ -28,6 +28,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "../../hardware/BLE.h"
+#include "../../hardware/ESP01S.h"
+#include "../../hardware/LU9685.h"
 #include "../../hardware/motor.h"
 #include "../../hardware/NVIC.h"
 
@@ -110,6 +112,8 @@ int main(void)
   Hardware_NVIC_InitPeripheralIRQs();
   Motor_Init();
   BLE_Init();
+  ESP01S_Init();
+  LU9685_Init();
 
   /* USER CODE END 2 */
 

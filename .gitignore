@@ -6,9 +6,23 @@ MDK-ARM/*.uvguix.*
 MDK-ARM/.vscode/*.log
 MDK-ARM/.vscode/*.lock
 
+# Generated outputs inside copied reference projects
+references/**/OBJ/
+references/**/Objects/
+references/**/Listings/
+references/**/*.o
+references/**/*.d
+references/**/*.crf
+references/**/*.axf
+references/**/*.map
+references/**/*.lst
+
 # graphify generated outputs and temporary files
 graphify-out/
 .graphify_*
+
+# Local vision calibration captures (large CSV/photo samples)
+data/vision_calibration/CSV and PHOTOS/
 
 # Editor and OS noise
 .vscode/

@@ -1766,6 +1766,36 @@
               <FilePath>..\hardware\BLE.h</FilePath>
             </File>
             <File>
+              <FileName>ESP01S.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\ESP01S.c</FilePath>
+            </File>
+            <File>
+              <FileName>ESP01S.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\hardware\ESP01S.h</FilePath>
+            </File>
+            <File>
+              <FileName>MQTT_Command.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\MQTT_Command.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTT_Command.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\hardware\MQTT_Command.h</FilePath>
+            </File>
+            <File>
+              <FileName>LU9685.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\LU9685.c</FilePath>
+            </File>
+            <File>
+              <FileName>LU9685.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\hardware\LU9685.h</FilePath>
+            </File>
+            <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\hardware\motor.c</FilePath>

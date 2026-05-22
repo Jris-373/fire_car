@@ -26,7 +26,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "../../hardware/BLE.h"
+#include "../../hardware/ESP01S.h"
 #include "../../hardware/JY61P.h"
+#include "../../hardware/MQTT_Command.h"
 #include "../../hardware/motor.h"
 
 /* USER CODE END Includes */
@@ -102,6 +104,8 @@ void MX_FREERTOS_Init(void) {
   JY61P_StartTask();
   Motor_StartHeadingTask();
   BLE_StartTask();
+  ESP01S_StartTask();
+  MQTT_Command_StartTask();
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */

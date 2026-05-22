@@ -4,6 +4,7 @@
 #include "NVIC.h"
 
 #include "BLE.h"
+#include "ESP01S.h"
 #include "motor.h"
 
 /* FreeRTOS 允许调用 FromISR API 的最高抢占优先级为 5，USART 使用该等级。 */
@@ -35,13 +36,22 @@ void Hardware_NVIC_InitKernelIRQ(void)
 
 void Hardware_NVIC_InitPeripheralIRQs(void)
 {
+  HAL_NVIC_SetPriority(UART4_IRQn, HARDWARE_NVIC_USART_PRIORITY, HARDWARE_NVIC_DEFAULT_SUBPRIO);
+  HAL_NVIC_EnableIRQ(UART4_IRQn);
+
   HAL_NVIC_SetPriority(USART2_IRQn, HARDWARE_NVIC_USART_PRIORITY, HARDWARE_NVIC_DEFAULT_SUBPRIO);
   HAL_NVIC_EnableIRQ(USART2_IRQn);
 }
 
 void Hardware_NVIC_DeInitPeripheralIRQs(void)
 {
+  HAL_NVIC_DisableIRQ(UART4_IRQn);
   HAL_NVIC_DisableIRQ(USART2_IRQn);
+}
+
+void Hardware_NVIC_DeInitUART4IRQ(void)
+{
+  HAL_NVIC_DisableIRQ(UART4_IRQn);
 }
 
 void Hardware_NVIC_DeInitUSART2IRQ(void)
@@ -61,6 +71,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     /* BLE 使用 USART2 单字节中断接收。 */
     BLE_RxCpltCallbackFromISR(huart);
   }
+  else if (huart->Instance == UART4)
+  {
+    /* ESP-01S 使用 UART4 单字节中断接收 AT/MQTT 响应。 */
+    ESP01S_RxCpltCallbackFromISR(huart);
+  }
 }
 
 void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart)
@@ -79,6 +94,11 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
   {
     /* USART2 错误后重新武装 BLE 的单字节接收。 */
     BLE_ErrorCallbackFromISR(huart);
+  }
+  else if (huart->Instance == UART4)
+  {
+    /* UART4 错误后重新武装 ESP-01S 的单字节接收。 */
+    ESP01S_ErrorCallbackFromISR(huart);
   }
 }
 

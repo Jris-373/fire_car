@@ -14,11 +14,12 @@ HAL_StatusTypeDef Hardware_NVIC_InitHALTimebaseIRQ(uint32_t tick_priority);
 /* FreeRTOS 内核相关中断优先级配置。 */
 void Hardware_NVIC_InitKernelIRQ(void);
 
-/* 应用外设中断登记：DMA1 Stream1/3 和 USART2。 */
+/* 应用外设中断登记：UART4 和 USART2。 */
 void Hardware_NVIC_InitPeripheralIRQs(void);
 
 /* 应用外设中断反初始化接口。 */
 void Hardware_NVIC_DeInitPeripheralIRQs(void);
+void Hardware_NVIC_DeInitUART4IRQ(void);
 void Hardware_NVIC_DeInitUSART2IRQ(void);
 
 #ifdef __cplusplus
